@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mã Xanh 360 – Cổng hỗ trợ học đường Tỉnh Ninh Bình</title>
+<style>
+:root {
+  --site-primary: #123b32;
+  --site-on-primary: #ffffff;
+  --site-secondary: #d8eee2;
+  --site-on-secondary: #153d32;
+  --site-background: #f4f8f5;
+  --site-on-background: #0d221c;
+  --site-font: "Times New Roman", Times, Georgia, serif;
+  --green: #1b6345;
+  --mint: #bfe4cf;
+  --gold: #b59345;
+  --muted: #2f4f43;
+  --line: #c6dcd0;
+  --surface: #ffffff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { 
+  margin: 0; 
+  background: var(--site-background); 
+  color: var(--site-on-background); 
+  font-family: var(--site-font); 
+  -webkit-font-smoothing: antialiased;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.85;
+}
+#app { min-height: 100vh; width: 100%; overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+
+.topline { height: 6px; background: linear-gradient(90deg, var(--gold), #f0dfa8, var(--green)); }
+
+/* Navigation */
+.nav { max-width: 1180px; margin: auto; padding: 22px 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; position: relative; background: var(--surface); border-bottom: 2px solid var(--line); }
+.menu-toggle { display: none; border: 1.5px solid var(--line); background: #fff; color: var(--site-primary); border-radius: 10px; padding: 9px 12px; font-size: 18px; cursor: pointer; }
+.brand { display: flex; align-items: center; gap: 14px; min-width: 260px; }
+.seal { width: 50px; height: 50px; border: 2px solid var(--gold); border-radius: 50%; display: grid; place-items: center; color: var(--gold); font-size: 22px; background: #123b32; box-shadow: 0 4px 12px rgba(18,59,50,0.15); }
+.brand strong { display: block; color: var(--site-primary); font-size: 17px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 900; }
+.brand span { display: block; color: var(--muted); font-size: 13px; font-weight: 800; margin-top: 3px; }
+.navlinks { display: flex; align-items: center; gap: 22px; font-size: 16px; color: #1b3d30; font-weight: 900; }
+.navlinks a:hover { color: var(--green); }
+.nav-cta { background: var(--site-primary); color: white; border: 0; border-radius: 99px; padding: 12px 24px; font-size: 15px; font-weight: 900; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 12px rgba(18,59,50,0.2); }
+.nav-cta:hover { background: #1b5447; }
+
+/* Hero Section */
+.hero { background: var(--site-primary); color: white; position: relative; isolation: isolate; }
+.hero-inner { max-width: 1180px; margin: auto; padding: 90px 28px 90px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 55px; align-items: center; }
+.eyebrow { color: var(--gold); font-size: 15px; letter-spacing: 0.15em; font-weight: 900; text-transform: uppercase; display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.eyebrow:before { content: ""; width: 34px; height: 2px; background: var(--gold); }
+h1 { font-family: var(--site-font); font-weight: 900; font-size: clamp(40px, 5.2vw, 62px); line-height: 1.18; letter-spacing: -0.01em; margin: 16px 0 16px; color: #ffffff; }
+h1 em { color: var(--gold); font-style: normal; }
+.hero-sub { color: #edf5f0; font-size: 20px; line-height: 1.6; max-width: 590px; font-weight: 800; }
+.hero-copy { color: #d3e7dc; font-size: 17px; line-height: 1.85; max-width: 570px; margin: 20px 0 28px; font-weight: 700; }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.btn-primary { border: 0; background: var(--gold); color: #123b32; border-radius: 99px; padding: 14px 28px; font-weight: 900; font-size: 16px; cursor: pointer; letter-spacing: 0.03em; box-shadow: 0 4px 15px rgba(194,162,89,0.3); }
+.btn-primary:hover { opacity: 0.9; }
+.btn-ghost { border: 2px solid rgba(255,255,255,0.6); color: white; background: transparent; border-radius: 99px; padding: 13px 26px; font-size: 16px; font-weight: 800; cursor: pointer; }
+
+/* Hero Art & Demo Screen */
+.hero-art { min-height: 380px; display: grid; place-items: center; position: relative; }
+.hero-img-card { width: min(460px, 100%); border-radius: 20px; overflow: hidden; border: 2.5px solid rgba(194,162,89,0.7); box-shadow: 0 20px 50px rgba(0,0,0,0.4); background: #fff; position: relative; z-index: 2; transform: rotate(1deg); }
+.hero-img-card img { width: 100%; height: 280px; object-fit: cover; display: block; }
+.hero-img-caption { padding: 16px; background: #123b32; color: #fff; font-size: 15px; font-weight: 900; text-align: center; border-top: 1px solid rgba(255,255,255,0.15); }
+
+/* Quick Actions Strip */
+.quick-actions { max-width: 1180px; margin: -30px auto 0; padding: 0 28px; position: relative; z-index: 3; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.quick-card { background: #fff; border: 1.5px solid var(--line); border-radius: 18px; padding: 24px; display: flex; gap: 16px; align-items: flex-start; box-shadow: 0 12px 35px rgba(18,59,50,0.08); transition: transform 0.2s; }
+.quick-card:hover { transform: translateY(-3px); }
+.quick-icon { flex: 0 0 50px; width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center; background: #e8f3ec; color: var(--green); font-size: 22px; }
+.quick-card strong { display: block; color: var(--site-primary); font-size: 18px; margin: 0 0 6px; font-weight: 900; }
+.quick-card p { margin: 0; color: #2d4f41; font-size: 16px; line-height: 1.6; font-weight: 700; }
+
+/* Intro / General section */
+.intro { max-width: 930px; margin: auto; padding: 80px 28px 60px; text-align: center; }
+.kicker { color: var(--green); font-size: 14px; letter-spacing: 0.19em; text-transform: uppercase; font-weight: 900; margin-bottom: 8px; }
+h2 { font-family: var(--site-font); font-weight: 900; font-size: clamp(32px, 4vw, 44px); line-height: 1.2; color: #173c2e; margin: 10px 0 16px; }
+.intro p { color: #204033; font-size: 17px; line-height: 1.9; max-width: 790px; margin: 0 auto; font-weight: 700; }
+
+/* Function Hub */
+.function-hub { max-width: 1180px; margin: 0 auto; padding: 80px 28px; }
+.function-heading { max-width: 760px; margin: 0 auto 36px; text-align: center; }
+.function-heading p { color: #2d4f41; font-size: 17px; line-height: 1.8; font-weight: 700; }
+.function-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.function-card { background: #fff; border: 1.5px solid var(--line); border-radius: 20px; padding: 28px; display: flex; gap: 20px; min-height: 200px; box-shadow: 0 10px 30px rgba(18,59,50,0.06); }
+.function-symbol { width: 54px; height: 54px; flex: 0 0 54px; border-radius: 16px; display: grid; place-items: center; background: #e8f3ec; color: #237b58; font-size: 24px; }
+.function-card h3 { color: #173c2e; font-family: var(--site-font); font-size: 24px; font-weight: 900; margin: 0 0 8px; line-height: 1.3; }
+.function-card p { color: #2d4f41; font-size: 16px; line-height: 1.8; margin: 0 0 16px; font-weight: 700; }
+.function-card a, .function-card button { border: 0; padding: 0; background: none; color: #237b58; font-size: 15px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; }
+.function-card a:hover, .function-card button:hover { text-decoration: underline; }
+
+.function-wide { grid-column: 1/-1; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; background: #eaf2ec; border-radius: 20px; padding: 30px; border: 1.5px solid var(--line); }
+.location-panel { background: #fff; border: 1.5px solid var(--line); border-radius: 16px; padding: 24px; }
+.location-panel h3 { margin: 0 0 8px; color: #173c2e; font-family: var(--site-font); font-size: 24px; font-weight: 900; line-height: 1.3; }
+.location-panel p { color: #2d4f41; font-size: 16px; line-height: 1.7; margin-bottom: 12px; font-weight: 700; }
+.location-panel label { display: block; color: #173c2e; font-size: 15px; font-weight: 900; margin: 14px 0 6px; }
+.location-panel select, .location-panel input { width: 100%; padding: 13px; border: 1.5px solid var(--line); border-radius: 10px; background: #fff; color: #0d221c; font: inherit; font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+.location-result { display: none; padding: 14px; margin-top: 12px; border-radius: 10px; background: #edf6f0; color: #123b32; font-size: 15px; line-height: 1.7; font-weight: 800; }
+.knowledge-list { display: grid; gap: 12px; margin-top: 16px; }
+.knowledge-list div { background: #fff; border: 1.5px solid var(--line); border-radius: 12px; padding: 14px 16px; color: #1c3d30; font-size: 16px; line-height: 1.7; font-weight: 700; }
+.knowledge-list b { color: #173c2e; font-weight: 900; }
+.function-note { color: #2f4f43; font-size: 14px; line-height: 1.7; margin-top: 14px; font-weight: 700; }
+.function-wide > div > h3 { font-family: var(--site-font); font-weight: 900; font-size: 28px; color: #173c2e; margin: 10px 0; line-height: 1.25; }
+
+/* Report Area */
+.report-area { max-width: 1180px; margin: 0 auto; padding: 80px 28px; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 50px; align-items: start; }
+.report-intro h2 { margin-top: 10px; }
+.report-intro p { color: #1c3d30; font-size: 17px; line-height: 1.9; font-weight: 700; }
+.privacy-note { margin-top: 24px; padding: 18px 20px; background: #eaf2ec; border-left: 4px solid var(--green); color: #143328; font-size: 16px; line-height: 1.8; border-radius: 0 12px 12px 0; font-weight: 800; }
+.report-box { background: #fff; border: 1.5px solid var(--line); border-radius: 20px; padding: 32px; box-shadow: 0 15px 45px rgba(18,59,50,0.08); }
+.report-box h3 { color: #173c2e; font-family: var(--site-font); font-weight: 900; font-size: 28px; margin: 0 0 8px; }
+.report-box .hint { color: var(--muted); font-size: 16px; line-height: 1.6; margin: 0 0 20px; font-weight: 800; }
+.report-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.report-option { border: 1.5px solid var(--line); background: #fbfdfb; color: #163d2f; border-radius: 12px; padding: 14px; text-align: left; cursor: pointer; font-size: 16px; font-weight: 900; line-height: 1.5; min-height: 76px; transition: all 0.2s; }
+.report-option:hover, .report-option.selected { border-color: var(--green); background: #eaf5ed; box-shadow: inset 0 0 0 1.5px var(--green); }
+.report-option span { display: block; font-size: 22px; margin-bottom: 6px; }
+.report-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+.report-fields label { color: var(--site-primary); font-size: 15px; font-weight: 900; display: block; }
+.report-fields input, .report-fields textarea, .report-fields select { width: 100%; margin-top: 6px; border: 1.5px solid var(--line); border-radius: 10px; padding: 13px; font: inherit; font-size: 16px; color: var(--site-on-background); background: #fff; font-weight: 700; }
+.report-fields textarea { min-height: 100px; resize: vertical; }
+.report-fields .wide { grid-column: 1/-1; }
+.report-submit { margin-top: 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.report-submit small { color: var(--muted); font-size: 15px; max-width: 270px; line-height: 1.6; font-weight: 800; }
+.report-confirm { display: none; margin-top: 16px; padding: 15px; background: #eaf5ed; border-radius: 10px; color: #123b32; font-size: 16px; line-height: 1.7; font-weight: 900; }
+
+/* Trust Strip */
+.trust-strip { background: var(--site-primary); color: #eef5f1; padding: 28px 28px; }
+.trust-inner { max-width: 1180px; margin: auto; display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+.trust-inner span { font-size: 15px; color: #d2e8dd; font-weight: 800; }
+.trust-inner b { color: var(--gold); font-weight: 900; }
+
+/* Activity Section */
+.activity-section { background: #fff; padding: 80px 28px; }
+.activity-inner { max-width: 1180px; margin: auto; }
+.activity-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 35px; }
+.activity-head p { max-width: 510px; color: var(--muted); font-size: 17px; line-height: 1.85; font-weight: 700; margin: 0; }
+.activity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.activity-card { background: #f7faf7; border: 1.5px solid var(--line); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
+.activity-img { width: 100%; height: 185px; object-fit: cover; border-bottom: 1.5px solid var(--line); }
+.activity-body { padding: 22px 24px 26px; }
+.activity-body small { color: var(--green); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 900; display: block; margin-bottom: 6px; }
+.activity-body h3 { color: #173c2e; font-family: var(--site-font); font-size: 22px; line-height: 1.35; font-weight: 900; margin: 0 0 10px; }
+.activity-body p { color: #2d4f41; font-size: 16px; line-height: 1.8; font-weight: 700; margin: 0 0 16px; }
+.activity-link { color: var(--green); font-size: 15px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; }
+
+/* Map Preview & 3-Step Location Selector */
+.map-preview { margin-top: 35px; padding: 35px; border-radius: 20px; background: #eaf2ec; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; border: 1.5px solid var(--line); }
+.map-copy h3 { color: #173c2e; font-family: var(--site-font); font-size: 32px; font-weight: 900; margin: 8px 0 14px; line-height: 1.25; }
+.map-copy p { color: #1c3d30; font-size: 17px; line-height: 1.85; font-weight: 700; }
+.map-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; color: #1b3d30; font-size: 15px; font-weight: 900; }
+.map-legend span { display: flex; align-items: center; }
+.map-legend span:before { content: ""; display: inline-block; width: 11px; height: 11px; border-radius: 50%; background: #237b58; margin-right: 8px; }
+.map-legend span.yt:before { background: #b59345; }
+.map-legend span.ca:before { background: #1c528a; }
+
+.file-upload-box { margin-top: 8px; border: 2px dashed var(--line); border-radius: 10px; padding: 16px; text-align: center; background: #f8fbf8; }
+.file-upload-box input { display: block; max-width: 100%; margin: 10px auto 0; font-size: 14px; font-weight: 700; }
+.file-upload-label { font-size: 15px; font-weight: 900; color: var(--green); cursor: pointer; }
+.file-hint { display: block; color: var(--muted); font-size: 14px; line-height: 1.5; margin-top: 8px; font-weight: 700; }
+
+.location-selector { margin-top: 20px; background: #fff; border: 1.5px solid var(--line); border-radius: 16px; padding: 24px; }
+.location-selector label { display: block; font-weight: 900; color: var(--site-primary); font-size: 15px; margin-bottom: 6px; }
+.location-selector select { width: 100%; padding: 13px; border: 1.5px solid var(--line); border-radius: 10px; background: #fff; color: var(--site-on-background); font: inherit; font-size: 16px; font-weight: 700; margin-bottom: 14px; }
+
+.map-embed { width: 100%; min-height: 400px; border-radius: 16px; overflow: hidden; border: 1.5px solid var(--line); box-shadow: 0 15px 40px rgba(18,59,50,0.1); }
+.map-embed iframe { width: 100%; height: 400px; border: 0; }
+
+/* Pillars Section */
+.pillars { max-width: 1180px; margin: 0 auto; padding: 0 28px 90px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.pillar { background: var(--surface); border: 1.5px solid var(--line); border-radius: 20px; padding: 30px 24px; min-height: 290px; position: relative; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; }
+.pillar:hover { transform: translateY(-5px); box-shadow: 0 18px 40px rgba(18,59,50,0.08); }
+.pillar:after { content: ""; position: absolute; width: 110px; height: 110px; border: 1.5px solid var(--line); border-radius: 50%; right: -55px; bottom: -55px; }
+.pillar-no { color: var(--muted); font-size: 14px; letter-spacing: 0.12em; font-weight: 900; }
+.pillar-icon { width: 50px; height: 50px; border-radius: 14px; background: #e8f3ec; display: grid; place-items: center; color: var(--green); font-size: 24px; margin: 20px 0 16px; }
+.pillar h3 { font-family: var(--site-font); color: #173c2e; font-size: 24px; font-weight: 900; margin: 0 0 10px; }
+.pillar p { color: #2d4f41; font-size: 16px; line-height: 1.8; min-height: 54px; margin: 0 0 16px; font-weight: 700; }
+.pillar a { color: var(--green); font-size: 14px; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* Story Section */
+.story { background: #eaf2ec; padding: 80px 28px; }
+.story-inner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 60px; align-items: center; }
+.story-visual { min-height: 340px; background: var(--site-primary); border-radius: 24px; padding: 36px; color: white; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; border: 2px solid var(--gold); }
+.story-visual:after { content: ""; position: absolute; width: 290px; height: 290px; border: 1.5px solid rgba(194,162,89,0.4); border-radius: 50%; right: -100px; bottom: -120px; box-shadow: 0 0 0 28px rgba(255,255,255,0.05); }
+.story-visual small { color: var(--gold); letter-spacing: 0.17em; text-transform: uppercase; font-size: 12px; font-weight: 900; }
+.story-visual strong { font-family: var(--site-font); font-size: 38px; line-height: 1.2; font-weight: 900; max-width: 280px; z-index: 1; }
+.story-visual span { color: #c2d6ca; font-size: 15px; z-index: 1; font-weight: 700; }
+.story-copy h2 { margin-top: 10px; }
+.story-copy p { color: #1c3d30; font-size: 17px; line-height: 1.9; font-weight: 700; }
+.steps { display: grid; gap: 16px; margin-top: 28px; }
+.step { display: flex; gap: 16px; align-items: flex-start; }
+.step b { width: 32px; height: 32px; border-radius: 50%; flex: 0 0 32px; display: grid; place-items: center; background: #d5e9dc; color: #123b32; font-size: 15px; font-weight: 900; }
+.step span { color: #1c3d30; font-size: 16px; line-height: 1.7; font-weight: 700; }
+
+/* Footer */
+.footer { background: #0c2b23; color: #cbdcd3; padding: 45px 28px; font-weight: 800; }
+.footer-inner { max-width: 1180px; margin: auto; display: flex; justify-content: space-between; align-items: center; gap: 25px; }
+.footer strong { display: block; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 900; }
+.footer span { color: #9db6a8; font-size: 13px; display: block; margin-top: 6px; font-weight: 700; }
+.footer-links { display: flex; gap: 24px; color: #c0d2c7; font-size: 15px; font-weight: 800; }
+
+/* Modal */
+.modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(7,28,21,0.7); z-index: 20; padding: 20px; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
+.modal-backdrop.open { display: flex; }
+.modal { width: min(540px, 100%); background: #fff; border-radius: 20px; padding: 35px; box-shadow: 0 25px 80px rgba(0,0,0,0.3); border: 2px solid var(--line); }
+.modal h3 { font-family: var(--site-font); font-size: 30px; font-weight: 900; color: #173c2e; margin: 0 0 10px; }
+.modal p { color: #2d4f41; font-size: 16px; line-height: 1.8; font-weight: 700; }
+.modal label { display: block; color: #173c2e; font-size: 15px; font-weight: 900; margin: 16px 0 6px; }
+.modal input, .modal textarea { width: 100%; border: 1.5px solid var(--line); border-radius: 10px; padding: 13px; font: inherit; font-size: 16px; background: #fbfdfb; color: #173c2e; font-weight: 700; }
+.modal textarea { min-height: 105px; resize: vertical; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px; }
+.modal-actions button { border-radius: 99px; padding: 12px 22px; border: 1.5px solid var(--line); background: white; color: #173c2e; cursor: pointer; font-size: 15px; font-weight: 900; }
+.modal-actions .send { background: #174632; color: white; border-color: #174632; }
+
+/* Knowledge tabs */
+.knowledge-expand-section { max-width: 1180px; margin: 0 auto; padding: 65px 28px 75px; }
+.knowledge-container { background: #fff; border: 1.5px solid var(--line); border-radius: 20px; padding: 35px; box-shadow: 0 10px 30px rgba(18,59,50,0.06); }
+.knowledge-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; border-bottom: 1.5px solid var(--line); padding-bottom: 15px; }
+.ktab-btn { background: #f4f8f5; border: 1.5px solid var(--line); border-radius: 99px; padding: 12px 22px; font-size: 16px; font-weight: 900; color: #173c2e; cursor: pointer; transition: all .2s; }
+.ktab-btn.active, .ktab-btn:hover { background: var(--site-primary); color: white; border-color: var(--site-primary); }
+.ktab-content { display: none; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; } .ktab-content > div { width: 100%; }
+.ktab-content > div { width: 100%; }
+.ktab-content.active { display: grid; }
+.ktab-content h3 { font-family: var(--site-font); font-size: 26px; color: #173c2e; font-weight: 900; margin: 0 0 14px; }
+.ktab-content p { color: #1c3d30; font-size: 17px; line-height: 1.85; font-weight: 700; }
+.knowledge-visual img { width: 100%; height: 280px; object-fit: cover; border-radius: 14px; border: 1.5px solid var(--line); box-shadow: 0 8px 20px rgba(0,0,0,0.08); margin-bottom: 12px; }
+
+/* Bảng quan niệm sai lầm & danh bạ */
+.myth-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 16px; font-weight: 700; }
+.myth-table th, .myth-table td { border: 1.5px solid var(--line); padding: 13px 16px; text-align: left; }
+.myth-table th { background: #eaf5ed; color: var(--site-primary); font-weight: 900; }
+.myth-table td:first-child { color: #9b1c1c; font-weight: 800; background: #fffdfd; }
+.myth-table td:last-child { color: #1b6345; font-weight: 800; background: #f4fbf7; }
+
+.scenario-box { background: #f9fbf9; border: 1.5px solid var(--line); border-radius: 14px; padding: 18px 20px; margin-bottom: 16px; }
+.scenario-box h4 { color: var(--site-primary); margin: 0 0 8px 0; font-size: 19px; font-weight: 900; }
+.scenario-box p { margin: 0 0 10px 0; color: #334d42; font-style: italic; font-weight: 700; font-size: 17px; }
+.scenario-box ul { margin: 0; padding-left: 20px; color: #1c3d30; font-size: 16px; font-weight: 800; line-height: 1.7; }
+
+.network-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 16px; font-weight: 700; }
+.network-table th, .network-table td { border: 1.5px solid var(--line); padding: 13px 16px; text-align: left; }
+.network-table th { background: var(--site-primary); color: white; font-weight: 900; }
+
+.activity-link { color: var(--green); font-size: 15px; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; display: inline-block; margin-top: 10px; }
+.activity-link:hover { text-decoration: underline; }
+
+@media (max-width: 950px) { 
+  .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .navlinks { display: none; position: absolute; z-index: 10; top: calc(100% - 4px); left: 20px; right: 20px; padding: 18px; border: 1.5px solid var(--line); border-radius: 14px; background: #fff; box-shadow: 0 14px 35px rgba(18,59,50,0.12); flex-direction: column; align-items: stretch; gap: 0; }
+  .navlinks.open { display: flex; }
+  .navlinks a { padding: 14px 10px; border-bottom: 1.5px solid #edf2ee; font-weight: 900; }
+  .navlinks a:last-child { border-bottom: 0; }
+  .hero-inner { grid-template-columns: 1fr; padding-top: 65px; }
+  .hero-art { min-height: 320px; }
+  .pillars { grid-template-columns: repeat(2, 1fr); }
+  .story-inner { grid-template-columns: 1fr; gap: 35px; }
+  .function-grid { grid-template-columns: 1fr; }
+  .function-wide { grid-template-columns: 1fr; }
+  .activity-grid { grid-template-columns: 1fr 1fr; }
+  .activity-card:first-child { grid-column: 1/-1; }
+  .map-preview { grid-template-columns: 1fr; }
+  .report-area { grid-template-columns: 1fr; gap: 30px; }
+  .quick-actions { grid-template-columns: 1fr; margin-top: -20px; }
+  .ktab-content, .ktab-content.active { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) { 
+  .nav { padding: 16px 20px; }
+  .brand { min-width: 0; }
+  .hero-inner { padding: 50px 20px 40px; }
+  .pillars { grid-template-columns: 1fr; padding: 0 20px 60px; }
+  .intro { padding: 60px 20px 40px; }
+  .story { padding: 50px 20px; }
+  .activity-grid { grid-template-columns: 1fr; }
+  .activity-card:first-child { grid-column: auto; }
+  .footer-inner { align-items: flex-start; flex-direction: column; }
+  .footer-links { flex-wrap: wrap; gap: 14px; }
+  .report-options { grid-template-columns: 1fr; }
+  .report-fields { grid-template-columns: 1fr; }
+  .report-fields .wide { grid-column: auto; }
+  .knowledge-container { padding: 20px; }
+  .knowledge-tabs { align-items: stretch; }
+  .ktab-btn { width: 100%; text-align: left; }
+  .map-embed, .map-embed iframe { min-height: 280px; }
+}
+
+/* TIMES NEW ROMAN TOÀN TRANG - ĐẬM ĐÀ, RÕ RÀNG */
+html, body, #app, #app * { font-family: "Times New Roman", Times, Georgia, serif !important; }
+</style>
+</head>
+<body>
+<div id="app">
+<div class="topline"></div>
+<header class="nav">
+<a aria-label="Trang chủ Mã Xanh 360" class="brand" href="#home">
+<div class="seal">✳</div>
+<div><strong>Mã Xanh 360</strong><span>Học đường an toàn · Ninh Bình</span></div>
+</a>
+<nav class="navlinks" id="mainNav"><a href="#chucnang">Tất cả chức năng</a><a href="#baotin">Báo tin</a><a href="#vitri">Điểm hỗ trợ</a><a href="#tac-hai">Góc Xanh</a><a href="#hoatdong">Tin tức &amp; hoạt động</a><a href="#bando">Bản đồ</a></nav>
+<button aria-controls="mainNav" aria-expanded="false" aria-label="Mở menu" class="menu-toggle" id="menuToggle" type="button">☰</button>
+<a class="nav-cta" href="#baotin">Gửi tín hiệu hỗ trợ ↗</a>
+</header>
+<main id="home">
+<section class="hero">
+<div class="hero-inner">
+<div>
+<div class="eyebrow">CỔNG KẾT NỐI HỖ TRỢ HỌC ĐƯỜNG · TỈNH NINH BÌNH</div>
+<h1>MÃ XANH <em>360</em></h1>
+<div class="hero-sub">Lắng nghe, đồng hành và bảo vệ học đường an toàn, không khói thuốc.</div>
+<p class="hero-copy">Nền tảng hỗ trợ học sinh tìm kiếm sự lắng nghe, chia sẻ nguy cơ và tiếp cận kiến thức phòng ngừa tại Ninh Bình.</p>
+<div class="actions"><a class="btn-primary" href="#baotin">Báo tin hỗ trợ ngay ↗</a><a class="btn-ghost" href="#hethong">Tra cứu điểm hỗ trợ</a></div>
+</div>
+<div class="hero-art">
+<div class="hero-img-card">
+<img alt="Tổng quan hệ sinh thái Mã Xanh 360 – Chuyển đổi số vì học đường an toàn" src="1793614357903_690076126047405640_690076126047405640_71ebb153f70cb288c23295990f43cfb7.jpg"/>
+<div class="hero-img-caption">Tổng quan hệ sinh thái Mã Xanh 360 – Chuyển đổi số vì học đường an toàn</div>
+</div>
+</div>
+</div>
+</section>
+<section aria-label="Lối tắt" class="quick-actions">
+<a class="quick-card" href="#baotin"><div class="quick-icon">✉</div><div><strong>Em muốn báo tin</strong><p>Chia sẻ một nguy cơ hoặc sự việc khiến em lo lắng.</p></div></a>
+<a class="quick-card" href="#hethong"><div class="quick-icon">✦</div><div><strong>Em muốn tìm hiểu</strong><p>Nhận biết thuốc lá điện tử và cách tự bảo vệ bản thân.</p></div></a>
+<a class="quick-card" href="#quytrinh"><div class="quick-icon">◎</div><div><strong>Em muốn biết quy trình</strong><p>Tìm hiểu ai tiếp nhận, thông tin được xử lý ra sao.</p></div></a>
+</section>
+<section class="function-hub" id="chucnang">
+<div class="function-heading">
+<div class="kicker">CÁC CHỨC NĂNG</div>
+<h2>Chọn dịch vụ em đang cần</h2>
+<p>Các chức năng được sắp xếp rõ ràng để em dễ tìm đúng kênh hỗ trợ và thông tin cần thiết.</p>
+</div>
+<div class="function-grid">
+<article class="function-card">
+<div class="function-symbol">✉</div>
+<div>
+<h3>Báo tin – Chia sẻ</h3>
+<p>Phản ánh việc bị rủ rê, sử dụng hoặc mua bán thuốc lá điện tử, bị đe dọa, bắt nạt hay phát hiện nguy cơ trong trường học. Có thể mô tả sự việc và thời điểm để người phụ trách nắm bắt.</p>
+<a href="#baotin">Mở biểu mẫu báo tin →</a>
+</div>
+</article>
+<article class="function-card">
+<div class="function-symbol">♡</div>
+<div>
+<h3>Tư vấn tâm lý – Trạm An Tâm</h3>
+<p>Nơi học sinh tìm kiếm sự lắng nghe khi căng thẳng, áp lực bạn bè, bị cô lập, lo sợ hoặc chưa biết cách từ chối lời rủ rê. Có thể đề nghị được trao đổi riêng với người phụ trách.</p>
+<button data-open="" type="button">Gửi lời nhờ tư vấn →</button>
+</div>
+</article>
+<article class="function-card">
+<div class="function-symbol">⌖</div>
+<div>
+<h3>Tìm điểm hỗ trợ – Chia sẻ khu vực</h3>
+<p>Chọn khu vực, trường học và nêu rõ nhu cầu để kết nối chính xác với người phụ trách, phòng tư vấn hoặc y tế học đường.</p>
+<a href="#vitri">Chọn khu vực hỗ trợ →</a>
+</div>
+</article>
+<article class="function-card" id="gocxanh">
+<div class="function-symbol">✧</div>
+<div>
+<h3>Góc Xanh – Hiểu để tự bảo vệ</h3>
+<p>Tìm hiểu tác hại của thuốc lá điện tử, nicotine, dấu hiệu cần chú ý và cách ứng xử khi bị mời dùng thử. Nội dung ngắn, dễ đọc, phù hợp với học sinh.</p>
+<a href="#tac-hai">Xem kiến thức phòng ngừa →</a>
+</div>
+</article>
+
+<div class="function-wide" id="vitri">
+<div class="location-panel" style="grid-column: 1 / -1;">
+<div class="kicker">Vòng Tay Xanh · Kết nối hỗ trợ chi tiết</div>
+<h3>Em đang cần hỗ trợ tại khu vực và trường học nào?</h3>
+<p>Cung cấp đầy đủ thông tin để hệ thống điều phối trực tiếp đến đúng giáo viên chủ nhiệm, phòng tư vấn tâm lý hoặc người phụ trách tại cơ sở.</p>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+<div>
+<label for="supportRegion">Khu vực / Phường xã</label>
+<select id="supportRegion">
+<option value="">-- Chọn khu vực --</option>
+<option>Phường Hoa Lư (TP. Ninh Bình)</option>
+<option>Phường Nam Định cũ</option>
+<option>Phường Phủ Lý cũ (Hà Nam)</option>
+<option>Khu vực huyện Hoa Lư</option>
+<option>Khu vực khác thuộc tỉnh</option>
+</select>
+</div>
+<div>
+<label for="supportSchoolName">Tên trường học cụ thể</label>
+<input id="supportSchoolName" type="text" placeholder="Ví dụ: THPT Chuyên Lương Văn Tụy...">
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 4px;">
+<div>
+<label for="supportSpecificArea">Khu vực cụ thể trong trường</label>
+<select id="supportSpecificArea">
+<option value="">Chọn khu vực trong trường</option>
+<option>Sân trường</option>
+<option>Khu vực lớp học</option>
+<option>Nhà vệ sinh / hành lang</option>
+<option>Cổng trường</option>
+<option>Khu vực khác</option>
+</select>
+</div>
+<div>
+<label for="supportNeed">Nhu cầu hỗ trợ cụ thể</label>
+<select id="supportNeed">
+<option value="gặp người phụ trách">Em muốn gặp trực tiếp người phụ trách</option>
+<option value="tư vấn riêng">Em cần tư vấn tâm lý riêng tư</option>
+<option value="báo nguy cơ">Em muốn báo cáo về một nguy cơ / sự việc</option>
+</select>
+</div>
+</div>
+
+<label for="supportDetailMsg" style="margin-top: 14px;">Mô tả chi tiết thêm (nếu cần)</label>
+<textarea id="supportDetailMsg" placeholder="Em có thể ghi rõ thời gian hoặc điều em muốn nhắn gửi đến người phụ trách..." style="width:100%; padding:12px; border:1.5px solid var(--line); border-radius:10px; min-height:80px; font:inherit; font-size:16px; font-weight:700;"></textarea>
+
+<button class="btn-primary" id="locationSubmit" type="button" style="margin-top: 16px;">Gửi yêu cầu kết nối người phụ trách →</button>
+<div class="location-result" id="locationResult" role="status"></div>
+<p class="function-note">Thông tin được bảo mật tuyệt đối và chuyển trực tiếp tới tổ công tác hỗ trợ học đường tại cơ sở.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="report-area" id="baotin">
+<div class="report-intro">
+<div class="kicker">Trạm An Tâm · Điểm chạm hỗ trợ</div>
+<h2>Lên tiếng theo cách em cảm thấy an toàn</h2>
+<p>Em không cần phải tự giải quyết mọi việc một mình. Hãy chọn nội dung gần nhất với điều em muốn chia sẻ. Có thể cung cấp thông tin vừa đủ để người phụ trách hiểu và hỗ trợ.</p>
+<div class="privacy-note"><strong>Quyền riêng tư là ưu tiên.</strong><br/>Không đăng thông tin cá nhân hoặc nội dung nhạy cảm lên nơi công khai. Khi vận hành chính thức, hệ thống đảm bảo bảo mật danh tính tuyệt đối cho học sinh.</div>
+</div>
+<div class="report-box">
+<h3>Em muốn chia sẻ điều gì?</h3>
+<p class="hint">Chọn một nhóm nội dung. Em có thể mô tả ngắn gọn ở phần bên dưới.</p>
+<div aria-label="Chọn nội dung chia sẻ" class="report-options" role="group">
+<button aria-pressed="false" class="report-option" type="button"><span>🚭</span>Sử dụng / Mua bán thuốc lá điện tử</button>
+<button aria-pressed="false" class="report-option" type="button"><span>🤝</span>Bị rủ rê, đe dọa hoặc áp lực</button>
+<button aria-pressed="false" class="report-option" type="button"><span>💬</span>Cần tư vấn tâm lý riêng tư</button>
+<button aria-pressed="false" class="report-option" type="button"><span>⚑</span>Phát hiện nguy cơ mất an toàn khác</button>
+</div>
+<div class="report-fields">
+<label class="wide">Điều gì đã xảy ra? (không bắt buộc)<textarea id="reportDescription" placeholder="Em có thể kể ngắn gọn điều đang khiến em lo lắng..."></textarea></label>
+<label>Thời điểm xảy ra<input id="reportWhen" placeholder="Ví dụ: Giờ ra chơi sáng nay" type="text"/></label>
+<label>Nơi xảy ra / Tên trường cụ thể<input id="reportWhere" placeholder="Ví dụ: Trường THPT..., phường..." type="text"/></label>
+<label class="wide">Đính kèm hình ảnh / Minh chứng (nếu có)<div class="file-upload-box"><span class="file-upload-label">📎 Chọn tệp hình ảnh minh chứng</span><input accept="image/*" aria-describedby="fileHint" id="proofFile" type="file"/><small class="file-hint" id="fileHint">Chỉ chọn hình ảnh cần thiết; tránh ảnh có thông tin cá nhân của người khác.</small></div></label>
+</div>
+<div class="report-submit">
+<small>Hệ thống mã hóa thông tin hỗ trợ bảo mật cho học đường.</small>
+<button class="btn-primary" id="reportSubmit" type="button">Gửi tin báo hỗ trợ →</button>
+</div>
+<div class="report-confirm" id="reportConfirm" role="status">Đã ghi nhận tin báo thành công! Nội dung đã được chuyển đến bộ phận tư vấn phụ trách. Cảm ơn em đã lên tiếng vì học đường an toàn.</div>
+</div>
+</section>
+
+<div class="trust-strip">
+<div class="trust-inner">
+<span><b>01</b> · Dễ tiếp cận</span>
+<span><b>02</b> · Tôn trọng quyền riêng tư</span>
+<span><b>03</b> · Có đầu mối tiếp nhận</span>
+<span><b>04</b> · Theo dõi phản hồi</span>
+</div>
+</div>
+
+<!-- GÓC XANH: KIẾN THỨC CHI TIẾT (ĐẦY ĐỦ THÔNG TIN TỪ TRƯỚC) -->
+<section class="knowledge-expand-section" id="tac-hai">
+<div class="function-heading">
+<div class="kicker">GÓC XANH · HỆ THỐNG KIẾN THỨC TRỌNG TÂM</div>
+<h2>Nhận thức rõ – Biết để phòng ngừa</h2>
+<p>Chọn từng chủ đề để tìm hiểu kiến thức, nhận biết nguy cơ và thực hành kỹ năng tự bảo vệ.</p>
+</div>
+<div class="knowledge-container">
+<div aria-label="Chủ đề kiến thức" class="knowledge-tabs" role="tablist">
+<button aria-controls="tab1" aria-selected="true" class="ktab-btn active" data-tab="tab1" id="tabbtn1" role="tab" type="button">01 · Nhận diện & Tác hại</button>
+<button aria-controls="tab2" aria-selected="false" class="ktab-btn" data-tab="tab2" id="tabbtn2" role="tab" type="button">02 · Kỹ năng từ chối</button>
+<button aria-controls="tab3" aria-selected="false" class="ktab-btn" data-tab="tab3" id="tabbtn3" role="tab" type="button">03 · Mạng lưới đồng hành</button>
+</div>
+
+<!-- Tab 1 -->
+<div aria-labelledby="tabbtn1" class="ktab-content active" id="tab1" role="tabpanel">
+<div>
+<h3>Thuốc lá điện tử thực chất là gì?</h3>
+<p>Thuốc lá điện tử là thiết bị sử dụng pin để làm nóng dung dịch, tạo ra khí dung cho người dùng hít vào. Sản phẩm có thể được thiết kế dưới nhiều hình dạng như bút, USB, hộp nhỏ hoặc thiết bị dùng một lần. Dung dịch bên trong thường có các thành phần như nicotine, chất tạo hương và dung môi; thành phần cụ thể tùy từng sản phẩm.</p>
+<p>Điều quan trọng cần hiểu là: <b>thứ người dùng hít vào không phải hơi nước thông thường</b>. Khí dung có thể chứa nicotine, các hạt siêu nhỏ, hợp chất hữu cơ dễ bay hơi và kim loại phát sinh từ thiết bị.</p>
+
+<h3 style="margin-top: 22px;">Bốn nguy cơ sức khỏe cần đặc biệt lưu ý</h3>
+<div class="knowledge-list">
+<div><b>1. Nicotine gây lệ thuộc:</b> Nicotine tác động đến hệ thần kinh và có khả năng gây nghiện. Khi thiếu nicotine, xuất hiện biểu hiện bồn chồn, cáu gắt, khó tập trung, thèm hút. Ở tuổi học sinh, não bộ đang phát triển nên việc tiếp xúc nicotine đặc biệt đáng lo ngại.</div>
+<div><b>2. Ảnh hưởng não bộ & học tập:</b> Tác động đến chức năng chú ý, học tập, trí nhớ và khả năng kiểm soát hành vi, khiến học sinh khó tập trung.</div>
+<div><b>3. Nguy cơ hệ hô hấp:</b> Khí dung chứa chất gây kích ứng đường hô hấp, gây ho, khô họng, khó chịu ở đường thở.</div>
+<div><b>4. Nguy cơ sản phẩm trôi nổi:</b> Sản phẩm không rõ nguồn gốc tiềm ẩn chất nguy hiểm không thể nhận biết bằng mắt thường.</div>
+</div>
+
+<h3 style="margin-top: 22px;">Những quan niệm sai lầm học sinh cần tránh</h3>
+<table class="myth-table">
+<thead>
+<tr>
+<th>Quan niệm thường gặp</th>
+<th>Sự thật cần biết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chỉ là hơi nước có mùi thơm</td>
+<td>Là khí dung chứa các hạt và chất hóa học, có thể gây hại</td>
+</tr>
+<tr>
+<td>Không có nicotine thì chắc chắn an toàn</td>
+<td>Không có nicotine không đồng nghĩa với không có chất gây hại</td>
+</tr>
+<tr>
+<td>Chỉ thử một lần sẽ không sao</td>
+<td>Việc thử sử dụng vẫn tiềm ẩn nguy cơ tiếp xúc chất độc hại và hình thành thói quen</td>
+</tr>
+<tr>
+<td>Có thể dùng để cai thuốc lá</td>
+<td>Không nên tự ý dùng thuốc lá điện tử như một biện pháp cai nghiện</td>
+</tr>
+<tr>
+<td>Sản phẩm bao bì đẹp, bán phổ biến thì an toàn</td>
+<td>Hình thức và mức độ phổ biến không phản ánh độ an toàn</td>
+</tr>
+</tbody>
+</table>
+<p style="margin-top: 14px; font-weight: 900; color: var(--green);">💡 Hãy nhớ: Không có căn cứ để xem thuốc lá điện tử là sản phẩm an toàn đối với học sinh.</p>
+</div>
+<div class="knowledge-visual">
+<img alt="Thuyết trình chuyên đề tác hại thuốc lá điện tử" src="1793637149611_690076126047405640_690076126047405640_1e1ec796502423e6c9fd92b0d3c61eb3.jpg"/>
+<div style="font-size: 14px; color: var(--muted); text-align: center; margin-top: 8px; font-weight: 900;">📸 Học sinh báo cáo chuyên đề về tác hại thuốc lá điện tử</div>
+</div>
+</div>
+
+<!-- Tab 2 -->
+<div aria-labelledby="tabbtn2" class="ktab-content" hidden="" id="tab2" role="tabpanel">
+<div>
+<h3>Kỹ năng từ chối và ứng phó linh hoạt</h3>
+<p>Nhiều trường hợp bắt đầu từ sự tò mò, lời mời của bạn bè hoặc tâm lý muốn chứng tỏ bản thân. Vì vậy, cần nhận biết từng tình huống và có cách xử lý phù hợp:</p>
+
+<div class="scenario-box">
+<h4>Tình huống 1: Bạn bè mời dùng thử</h4>
+<p><i>Ví dụ: “Thử một hơi đi, có gì đâu mà sợ”.</i></p>
+<ul>
+<li>Không nhận thiết bị hoặc đưa lên miệng thử.</li>
+<li>Trả lời ngắn gọn, dứt khoát: “Không, mình không hút”.</li>
+<li>Không cần thử để chứng minh bản thân không tò mò.</li>
+<li>Chủ động kết thúc cuộc trò chuyện nếu bị ép buộc.</li>
+</ul>
+</div>
+
+<div class="scenario-box">
+<h4>Tình huống 2: Bị chế giễu vì không sử dụng</h4>
+<p><i>Ví dụ: “Có thế mà cũng sợ”, “Trẻ con mới không dám thử”.</i></p>
+<ul>
+<li>Không để lời chế giễu làm thay đổi quyết định.</li>
+<li>Đáp trả vững vàng: “Mình không cần dùng thứ đó để chứng minh điều gì cả”.</li>
+<li>Tìm đến nhóm bạn có quan điểm tích cực.</li>
+</ul>
+</div>
+
+<div class="scenario-box">
+<h4>Tình huống 3: Được nhờ cầm hộ hoặc mang hộ thiết bị</h4>
+<p><i>Ví dụ: Bạn nhờ cất hộ một chiếc pod trong cặp, ngăn bàn.</i></p>
+<ul>
+<li>Từ chối cầm, giữ, vận chuyển hoặc che giấu thiết bị.</li>
+<li>Không tự ý tháo mở, thử sử dụng hay tiếp xúc dung dịch.</li>
+<li>Báo ngay cho giáo viên hoặc người phụ trách.</li>
+</ul>
+</div>
+
+<div class="scenario-box">
+<h4>Tình huống 4: Phát hiện bạn đang sử dụng / Gặp sự cố sức khỏe</h4>
+<ul>
+<li>Không hùa theo, quay video cổ vũ hay chế giễu.</li>
+<li>Khuyên bạn dừng lại và tìm người hỗ trợ, báo giáo viên hoặc y tế.</li>
+<li><b>Trường hợp cấp cứu:</b> Nếu có biểu hiện khó thở, đau ngực, ngất, cần báo người lớn và gọi cấp cứu 115.</li>
+</ul>
+</div>
+
+<div class="scenario-box">
+<h4>Tình huống 5: Bị lôi kéo mua bán qua mạng xã hội</h4>
+<ul>
+<li>Không đặt mua, chuyển tiền hoặc cung cấp thông tin cá nhân.</li>
+<li>Không nhấp vào đường dẫn quảng cáo trôi nổi.</li>
+<li>Thông báo cho cha mẹ, giáo viên hoặc cơ quan chức năng.</li>
+</ul>
+</div>
+
+<div style="background: #eaf5ed; border-radius: 12px; padding: 18px; margin-top: 20px;">
+<h4 style="color: var(--site-primary); margin-top: 0; font-size: 19px; font-weight: 900;">🛡️ CÔNG THỨC 4 BƯỚC KHI BỊ RỦ RÊ</h4>
+<ol style="margin: 0; padding-left: 20px; font-weight: 900; color: #123b32; line-height: 1.8;">
+<li><b>Từ chối:</b> Nói rõ mình không sử dụng.</li>
+<li><b>Không tiếp xúc:</b> Không nhận, cầm hộ hoặc thử thiết bị.</li>
+<li><b>Rời khỏi:</b> Chủ động rời khỏi nơi có áp lực hoặc nguy cơ.</li>
+<li><b>Tìm hỗ trợ:</b> Báo với người lớn đáng tin cậy khi cần thiết.</li>
+</ol>
+</div>
+</div>
+<div class="knowledge-visual">
+<img alt="Học sinh tương tác và nâng cao nhận thức" src="1793637125001_690076126047405640_690076126047405640_df2ec00cd48bee5a382d6e17d648b132.jpg"/>
+<div style="font-size: 14px; color: var(--muted); text-align: center; margin-top: 8px; font-weight: 900;">📸 Học sinh chủ động tham gia, tương tác và nâng cao nhận thức</div>
+</div>
+</div>
+
+<!-- Tab 3 -->
+<div aria-labelledby="tabbtn3" class="ktab-content" hidden="" id="tab3" role="tabpanel">
+<div>
+<h3>Mạng lưới đồng hành và bảo vệ học sinh toàn diện</h3>
+<p>Nhà trường xây dựng hệ thống hỗ trợ rõ ràng, để mỗi học sinh biết chính xác mình có thể tìm đến đâu khi gặp vấn đề.</p>
+
+<h4 style="color: var(--site-primary); font-size: 19px; font-weight: 900; margin-top: 20px;">1. Tại nhà trường – Nơi tiếp nhận và hỗ trợ trực tiếp</h4>
+<table class="network-table">
+<thead>
+<tr>
+<th>Đầu mối hỗ trợ</th>
+<th>Trường hợp hỗ trợ học sinh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>Giáo viên chủ nhiệm</b></td>
+<td>Bị rủ rê, ép buộc; phát hiện bạn sử dụng; cần báo cáo sự việc.</td>
+</tr>
+<tr>
+<td><b>Ban Giám hiệu</b></td>
+<td>Phản ánh tình trạng mua bán, sử dụng trong trường; đề nghị can thiệp.</td>
+</tr>
+<tr>
+<td><b>Phòng tư vấn tâm lý học đường</b></td>
+<td>Đã sử dụng, muốn dừng nhưng gặp khó khăn; áp lực bạn bè, căng thẳng.</td>
+</tr>
+<tr>
+<td><b>Phòng y tế học đường</b></td>
+<td>Có biểu hiện khó chịu, ho, chóng mặt hoặc vấn đề sức khỏe.</td>
+</tr>
+<tr>
+<td><b>Đoàn Thanh niên, Đội Thiếu niên</b></td>
+<td>Tham gia tuyên truyền, tìm hiểu kiến thức, xây dựng môi trường lành mạnh.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 style="color: var(--site-primary); font-size: 19px; font-weight: 900; margin-top: 24px;">2. Tại gia đình – Người đồng hành gần gũi nhất</h4>
+<ul style="padding-left: 20px; font-weight: 800; color: #1c3d30; line-height: 1.8;">
+<li>Bình tĩnh trao đổi, tìm hiểu nguyên nhân và hoàn cảnh dẫn đến việc sử dụng.</li>
+<li>Không vội vàng trách mắng, xúc phạm hoặc khiến con che giấu sự việc.</li>
+<li>Cùng con tìm hiểu nguy cơ sức khỏe và thống nhất biện pháp dừng sử dụng.</li>
+<li>Đưa con đến cơ sở y tế tư vấn nếu đã dùng thường xuyên hoặc có triệu chứng bất thường.</li>
+<li>Phối hợp chặt chẽ với giáo viên và nhà trường để theo dõi, hỗ trợ lâu dài.</li>
+</ul>
+
+<h4 style="color: var(--site-primary); font-size: 19px; font-weight: 900; margin-top: 24px;">3. Khi cần hỗ trợ từ bên ngoài nhà trường</h4>
+<table class="network-table">
+<thead>
+<tr>
+<th>Đơn vị / Kênh hỗ trợ</th>
+<th>Trường hợp cần liên hệ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>Cơ sở y tế</b></td>
+<td>Có triệu chứng bất thường hoặc cần tư vấn về sức khỏe, lệ thuộc nicotine.</td>
+</tr>
+<tr>
+<td><b>Cơ quan Công an</b></td>
+<td>Phát hiện hành vi mua bán, lôi kéo, ép buộc hoặc vi phạm pháp luật.</td>
+</tr>
+<tr>
+<td><b>Tổng đài 111</b></td>
+<td>Trẻ em cần tư vấn, bảo vệ khi gặp nguy cơ xâm hại, bạo lực.</td>
+</tr>
+<tr>
+<td><b>Cấp cứu 115</b></td>
+<td>Xuất hiện tình trạng cấp cứu như khó thở nghiêm trọng, ngất.</td>
+</tr>
+</tbody>
+</table>
+
+<div style="background: #eaf5ed; border-radius: 12px; padding: 18px; margin-top: 20px;">
+<h4 style="color: var(--site-primary); margin-top: 0; font-size: 19px; font-weight: 900;">📌 Điều học sinh cần biết</h4>
+<p style="margin: 0; font-weight: 900; color: #123b32; line-height: 1.7;">Khi lên tiếng về vấn đề thuốc lá điện tử, các em không phải tự mình giải quyết mọi việc. Hãy tìm đúng đầu mối hỗ trợ, cung cấp thông tin trung thực và đề nghị được giúp đỡ. Nhà trường và gia đình luôn đồng hành để bảo vệ các em!</p>
+</div>
+</div>
+<div class="knowledge-visual">
+<img alt="Trạm An Tâm lắng nghe chia sẻ" src="1793637152937_690076126047405640_690076126047405640_b48e610760898acdaa82c77122f3c41e.jpg"/>
+<div style="font-size: 14px; color: var(--muted); text-align: center; margin-top: 8px; font-weight: 900;">📸 Không gian Trạm An Tâm: Lắng nghe, chia sẻ và hỗ trợ học sinh</div>
+</div>
+</div>
+
+</div>
+<p class="function-note">Thông tin giáo dục khái quát; nội dung chuyên môn cần được rà soát, cập nhật theo hướng dẫn của cơ quan y tế và cơ quan chức năng.</p>
+</section>
+
+<!-- HOẠT ĐỘNG / TRUYỀN THÔNG ĐỊA PHƯƠNG -->
+<section class="activity-section" id="hoatdong">
+<div class="activity-inner">
+<div class="activity-head">
+<div>
+<div class="kicker">GÓC TRUYỀN THÔNG ĐỊA PHƯƠNG</div>
+<h2>Hoạt động vì học đường an toàn</h2>
+</div>
+<p>Các chủ đề truyền thông tham khảo về phòng ngừa thuốc lá điện tử, an ninh học đường và tư vấn tâm lý tại tỉnh Ninh Bình.</p>
+</div>
+<div class="activity-grid">
+<article class="activity-card">
+<img alt="Học sinh tham gia buổi tuyên truyền tại sân trường" class="activity-img" src="1793637121325_690076126047405640_690076126047405640_a22a2de60ddd6906514eeffe3031f31f.jpg"/>
+<div class="activity-body"><small>Góc Xanh · Kiến thức</small><h3>Nhận diện nguy cơ, chủ động bảo vệ bản thân</h3><p>Những điều học sinh cần biết về nicotine, sản phẩm thuốc lá điện tử và cách ứng xử trước lời mời dùng thử.</p><a class="activity-link" href="https://baoninhbinh.org.vn" rel="noopener noreferrer" target="_blank">Tra cứu trên Báo Ninh Bình ↗</a></div>
+</article>
+<article class="activity-card">
+<img alt="Học sinh tích cực tham gia hoạt động nâng cao nhận thức" class="activity-img" src="1793637125001_690076126047405640_690076126047405640_df2ec00cd48bee5a382d6e17d648b132.jpg"/>
+<div class="activity-body"><small>Trạm An Tâm · Kỹ năng</small><h3>Từ chối lời rủ rê mà không đơn độc</h3><p>Gợi ý cách từ chối bình tĩnh, rời khỏi tình huống không an toàn và tìm người đáng tin cậy để hỗ trợ.</p><a class="activity-link" href="https://baoninhbinh.org.vn" rel="noopener noreferrer" target="_blank">Tra cứu trên Báo Ninh Bình ↗</a></div>
+</article>
+<article class="activity-card">
+<img alt="Nhà trường và lực lượng phối hợp xây dựng môi trường an toàn" class="activity-img" src="1793637132070_690076126047405640_690076126047405640_070066e2e662dc49a5807d3c16361607.jpg"/>
+<div class="activity-body"><small>Vòng Tay Xanh · Kết nối</small><h3>Mỗi điểm chạm là một cơ hội hỗ trợ</h3><p>Định hướng phối hợp giữa học sinh, gia đình, nhà trường và đầu mối phụ trách trong công tác phòng ngừa.</p><a class="activity-link" href="https://baoninhbinh.org.vn" rel="noopener noreferrer" target="_blank">Tra cứu trên Báo Ninh Bình ↗</a></div>
+</article>
+</div>
+
+<!-- BẢN ĐỒ XANH 3 BƯỚC CHI TIẾT (KHU VỰC -> XÃ/PHƯỜNG -> TRƯỜNG HỌC TOÀN TỈNH SAU SÁP NHẬP) -->
+<div class="map-preview" id="bando">
+<div class="map-copy">
+<div class="kicker">BẢN ĐỒ XANH · TRA CỨU 3 BƯỚC CHI TIẾT</div>
+<h3>Tra cứu trường học và điểm hỗ trợ Tỉnh Ninh Bình</h3>
+<p>Chọn khu vực sáp nhập ở Bước 1, tiếp tục chọn xã/phường ở Bước 2, và chọn trường học cụ thể ở Bước 3 để định vị trên bản đồ.</p>
+<div class="location-selector">
+<label for="ninhBinhRegionSelect">Bước 1: Chọn Khu vực / Tỉnh sáp nhập:</label>
+<select id="ninhBinhRegionSelect">
+<option value="">-- Chọn khu vực --</option>
+<option value="Khu vực Ninh Bình - Hoa Lư">1. Khu vực Ninh Bình – Hoa Lư (Trung tâm)</option>
+<option value="Khu vực Nam Định">2. Khu vực Nam Định</option>
+<option value="Khu vực Hà Nam">3. Khu vực Hà Nam</option>
+</select>
+
+<label for="ninhBinhCommuneSelect" style="margin-top:14px">Bước 2: Chọn Xã / Phường / Thị trấn:</label>
+<select id="ninhBinhCommuneSelect">
+<option value="">-- Vui lòng chọn Khu vực ở Bước 1 trước --</option>
+</select>
+
+<label for="ninhBinhSchoolSelect" style="margin-top:14px">Bước 3: Chọn Trường học / Cơ sở hỗ trợ:</label>
+<select id="ninhBinhSchoolSelect">
+<option value="Ninh Binh, Vietnam">-- Vui lòng chọn Xã / Phường trước --</option>
+</select>
+
+<button class="btn-primary" id="mapSearchBtn" type="button" style="margin-top: 14px;">Định vị trên Bản Đồ Xanh →</button>
+</div>
+<div class="map-legend">
+<span>Trường học / Điểm tư vấn</span>
+<span class="yt">Trạm y tế học đường</span>
+<span class="ca">Công an khu vực</span>
+</div>
+<p class="function-note">Bản đồ tự động cập nhật tọa độ thực tế theo danh mục trường học toàn tỉnh.</p>
+</div>
+<div class="map-embed"><iframe allowfullscreen="" id="googleMapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Ninh%20Binh%2C%20Vietnam&amp;output=embed" title="Bản đồ tra cứu khu vực Ninh Bình"></iframe></div>
+</div>
+
+</div>
+</section>
+
+<section class="pillars" id="hethong">
+<article class="pillar"><div class="pillar-no">01 / NHẬN THỨC</div><div class="pillar-icon">✧</div><h3>Góc Xanh</h3><p>Trang bị kiến thức, kỹ năng tự bảo vệ; nhận diện và phòng tránh tác hại của thuốc lá, thuốc lá điện tử.</p><a href="#tac-hai">Tìm hiểu kiến thức →</a></article>
+<article class="pillar"><div class="pillar-no">02 / LẮNG NGHE</div><div class="pillar-icon">⌂</div><h3>Trạm An Tâm</h3><p>Tạo nơi để học sinh chia sẻ, tìm kiếm sự giúp đỡ khi gặp khó khăn hoặc chịu áp lực từ bạn bè.</p><a href="#baotin">Gửi lời nhờ hỗ trợ →</a></article>
+<article class="pillar"><div class="pillar-no">03 / KẾT NỐI</div><div class="pillar-icon">♡</div><h3>Vòng Tay Xanh</h3><p>Kết nối nhà trường, gia đình và các lực lượng đồng hành để học sinh không phải đối diện khó khăn một mình.</p><a href="#vitri">Tìm điểm hỗ trợ →</a></article>
+<article class="pillar"><div class="pillar-no">04 / PHÒNG NGỪA</div><div class="pillar-icon">⌖</div><h3>Bản Đồ Xanh</h3><p>Tổng hợp thông tin không định danh, nhận diện nhu cầu và hỗ trợ xây dựng giải pháp phòng ngừa.</p><a href="#hoatdong">Xem điểm hỗ trợ →</a></article>
+</section>
+
+<section class="story" id="quytrinh">
+<div class="story-inner">
+<div class="story-visual"><small>HƯỚNG DẪN SỬ DỤNG</small><strong>Cần giúp đỡ?<br/>Hãy bắt đầu từ đây.</strong><span>Chọn đúng kênh · Chia sẻ vừa đủ · Kết nối người hỗ trợ</span></div>
+<div class="story-copy">
+<div class="kicker">Quy trình tiếp nhận hỗ trợ</div>
+<h2>Chia sẻ – tiếp nhận – đồng hành</h2>
+<div class="steps">
+<div class="step"><b>1</b><span><strong>Chọn nội dung:</strong> Báo tin về nguy cơ, đề nghị tư vấn hoặc tìm điểm hỗ trợ phù hợp.</span></div>
+<div class="step"><b>2</b><span><strong>Cung cấp thông tin cần thiết:</strong> Mô tả sự việc, thời điểm và khu vực nếu em thấy an toàn khi chia sẻ.</span></div>
+<div class="step"><b>3</b><span><strong>Người phụ trách tiếp nhận:</strong> Đầu mối được nhà trường phân công xem xét và liên hệ theo quy trình đã công bố.</span></div>
+<div class="step"><b>4</b><span><strong>Theo dõi hỗ trợ:</strong> Học sinh được hướng dẫn đến đúng người, đúng bộ phận và được cập nhật tình trạng xử lý.</span></div>
+</div>
+<p style="margin-top: 20px;"><strong>Lưu ý:</strong> Không gửi thông tin khẩn cấp qua biểu mẫu thử nghiệm. Nếu đang gặp nguy hiểm, hãy tìm ngay giáo viên, người lớn đáng tin cậy hoặc cơ quan chức năng.</p>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="footer-inner">
+<div><strong>Mã Xanh 360 – Cổng hỗ trợ học đường tỉnh Ninh Bình</strong><span>Báo tin · Tư vấn · Điểm hỗ trợ · Kiến thức phòng ngừa</span></div>
+<div class="footer-links"><a href="#hethong">Các chức năng</a><a href="#hethong">Kênh hỗ trợ</a><a href="#home">Lên đầu trang ↑</a></div>
+</div>
+</footer>
+</div>
+
+<div aria-labelledby="modalTitle" aria-modal="true" class="modal-backdrop" id="supportModal" role="dialog">
+<div class="modal">
+<h3 id="modalTitle">Điểm chạm hỗ trợ · Trạm An Tâm</h3>
+<p>Hãy chia sẻ điều em đang lo lắng để chuyên viên tâm lý hoặc giáo viên phụ trách có thể lắng nghe và hỗ trợ riêng tư.</p>
+<form id="supportForm">
+<label for="topic">Em muốn trao đổi về chủ đề gì?</label>
+<input id="topic" name="topic" placeholder="Ví dụ: thuốc lá điện tử, bị rủ rê, căng thẳng học tập..." required=""/>
+<label for="message">Nội dung chi tiết em muốn chia sẻ</label>
+<textarea id="message" name="message" placeholder="Em có thể kể ngắn gọn điều đang khiến em lo lắng..."></textarea>
+<div class="modal-actions">
+<button id="closeModal" type="button">Đóng</button>
+<button class="send" type="submit">Gửi lời nhờ tư vấn →</button>
+</div>
+</form>
+<p aria-live="polite" id="formNote" style="margin-top:12px; font-size:14px; font-weight:900; color:#1b6345;"></p>
+</div>
+</div>
+
+<script>
+document.querySelectorAll('.ktab-btn[data-tab]').forEach(button => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('.ktab-btn[data-tab]').forEach(item => {
+      item.classList.remove('active');
+      item.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('.ktab-content').forEach(panel => {
+      panel.classList.remove('active');
+      panel.hidden = true;
+    });
+    button.classList.add('active');
+    button.setAttribute('aria-selected', 'true');
+    const panel = document.getElementById(button.dataset.tab);
+    panel.hidden = false;
+    panel.classList.add('active');
+  });
+});
+
+const modal = document.getElementById('supportModal');
+document.querySelectorAll('[data-open]').forEach(button => button.addEventListener('click', () => { modal.classList.add('open'); document.getElementById('topic').focus(); }));
+document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('open'));
+modal.addEventListener('click', event => { if (event.target === modal) modal.classList.remove('open'); });
+document.getElementById('supportForm').addEventListener('submit', event => { event.preventDefault(); document.getElementById('formNote').textContent = 'Đã gửi yêu cầu tư vấn thành công! Người phụ trách sẽ sớm liên hệ và bảo mật thông tin cho em.'; });
+
+document.querySelectorAll('.report-option').forEach(option => option.addEventListener('click', () => {
+  document.querySelectorAll('.report-option').forEach(item => {
+    item.classList.remove('selected');
+    item.setAttribute('aria-pressed', 'false');
+  });
+  option.classList.add('selected');
+  option.setAttribute('aria-pressed', 'true');
+}));
+
+document.getElementById('reportSubmit').addEventListener('click', () => {
+  const chosen = document.querySelector('.report-option.selected');
+  const box = document.getElementById('reportConfirm');
+  box.style.display = 'block';
+  box.textContent = chosen
+    ? 'Đã ghi nhận tin báo thành công về "' + chosen.innerText.trim() + '"! Thông tin đã được mã hóa an toàn và gửi đến bộ phận tư vấn phụ trách.'
+    : 'Em hãy chọn một nhóm nội dung ở phía trên trước khi gửi nhé!';
+});
+
+// DỮ LIỆU ĐẦY ĐỦ 3 BƯỚC CHO BẢN ĐỒ XANH (KHU VỰC -> XÃ/PHƯỜNG -> TRƯỜNG HỌC)
+const locationTreeData = {
+  "Khu vực Ninh Bình - Hoa Lư": {
+    communes: [
+      { name: "-- Chọn Xã / Phường --", schools: [{ name: "-- Chọn trường học --", query: "Thành phố Ninh Bình, Ninh Bình" }] },
+      { 
+        name: "Phường Hoa Lư (Trung tâm)", 
+        schools: [
+          { name: "Trường THPT chuyên Lương Văn Tụy", query: "Trường THPT Chuyên Lương Văn Tụy, Ninh Bình" },
+          { name: "Trường THPT Ninh Bình – Bạc Liêu", query: "Trường THPT Ninh Bình Bạc Liêu" },
+          { name: "Trường THPT Đinh Tiên Hoàng", query: "Trường THPT Đinh Tiên Hoàng, Ninh Bình" },
+          { name: "Trường Đại học Hoa Lư", query: "Trường Đại học Hoa Lư, Ninh Bình" }
+        ]
+      },
+      {
+        name: "Phường Tân Thành / Đông Thành",
+        schools: [
+          { name: "Trường Tiểu học Tân Thành", query: "Trường Tiểu học Tân Thành, Ninh Bình" },
+          { name: "Trường Tiểu học Đông Thành", query: "Trường Tiểu học Đông Thành, Ninh Bình" },
+          { name: "Trường Mầm non Đông Thành", query: "Trường Mầm non Đông Thành, Ninh Bình" },
+          { name: "Trường THCS Lý Tự Trọng", query: "Trường THCS Lý Tự Trọng, Ninh Bình" }
+        ]
+      },
+      {
+        name: "Huyện Hoa Lư (Khu vực lân cận)",
+        schools: [
+          { name: "Trường THPT Hoa Lư A", query: "Trường THPT Hoa Lư A, Ninh Bình" },
+          { name: "Trường THCS Ninh Hải", query: "Trường THCS Ninh Hải, Hoa Lư, Ninh Bình" },
+          { name: "Trường Cao đẳng Y tế Ninh Bình", query: "Trường Cao đẳng Y tế Ninh Bình" }
+        ]
+      }
+    ]
+  },
+  "Khu vực Nam Định": {
+    communes: [
+      { name: "-- Chọn Xã / Phường --", schools: [{ name: "-- Chọn trường học --", query: "Nam Định, Vietnam" }] },
+      {
+        name: "Thành phố Nam Định cũ",
+        schools: [
+          { name: "Trường THPT chuyên Lê Hồng Phong", query: "Trường THPT chuyên Lê Hồng Phong, Nam Định" },
+          { name: "Trường THPT Trần Hưng Đạo", query: "Trường THPT Trần Hưng Đạo, Nam Định" },
+          { name: "Trường Đại học Điều dưỡng Nam Định", query: "Trường Đại học Điều dưỡng Nam Định" },
+          { name: "Trường Đại học Sư phạm Kỹ thuật Nam Định", query: "Trường Đại học Sư phạm Kỹ thuật Nam Định" }
+        ]
+      },
+      {
+        name: "Huyện Mỹ Lộc & các huyện",
+        schools: [
+          { name: "Trường THPT Mỹ Lộc", query: "Trường THPT Mỹ Lộc, Nam Định" },
+          { name: "Trường THPT Xuân Trường", query: "Trường THPT Xuân Trường, Nam Định" },
+          { name: "Trường THPT Giao Thủy", query: "Trường THPT Giao Thủy, Nam Định" }
+        ]
+      }
+    ]
+  },
+  "Khu vực Hà Nam": {
+    communes: [
+      { name: "-- Chọn Xã / Phường --", schools: [{ name: "-- Chọn trường học --", query: "Hà Nam, Vietnam" }] },
+      {
+        name: "Thành phố Phủ Lý cũ",
+        schools: [
+          { name: "Trường THPT chuyên Biên Hòa", query: "Trường THPT Chuyên Biên Hòa, Phủ Lý, Hà Nam" },
+          { name: "Trường THPT A Phủ Lý", query: "Trường THPT A Phủ Lý, Hà Nam" },
+          { name: "Trường THPT B Phủ Lý", query: "Trường THPT B Phủ Lý, Hà Nam" }
+        ]
+      },
+      {
+        name: "Huyện Duy Tiên & Kim Bảng",
+        schools: [
+          { name: "Trường THPT A Duy Tiên", query: "Trường THPT A Duy Tiên, Hà Nam" },
+          { name: "Trường THPT Kim Bảng A", query: "Trường THPT Kim Bảng A, Hà Nam" }
+        ]
+      }
+    ]
+  }
+};
+
+function updateMapLocation(query) {
+  const frame = document.getElementById('googleMapFrame');
+  if (frame && query) frame.src = 'https://www.google.com/maps?q=' + encodeURIComponent(query) + '&output=embed';
+}
+
+const regionSelect = document.getElementById('ninhBinhRegionSelect');
+const communeSelect = document.getElementById('ninhBinhCommuneSelect');
+const schoolSelect = document.getElementById('ninhBinhSchoolSelect');
+
+if (regionSelect && communeSelect && schoolSelect) {
+  regionSelect.addEventListener('change', () => {
+    const region = regionSelect.value;
+    communeSelect.innerHTML = '';
+    schoolSelect.innerHTML = '';
+    
+    if (!region || !locationTreeData[region]) {
+      communeSelect.add(new Option('-- Vui lòng chọn Khu vực trước --', ''));
+      schoolSelect.add(new Option('-- Vui lòng chọn Xã / Phường trước --', 'Ninh Binh, Vietnam'));
+      updateMapLocation('Ninh Binh, Vietnam');
+      return;
+    }
+    
+    communeSelect.add(new Option('-- Chọn Xã / Phường / Thị trấn --', ''));
+    schoolSelect.add(new Option('-- Chọn trường học cụ thể --', ''));
+    
+    locationTreeData[region].communes.forEach((commune, index) => {
+      if (index > 0) communeSelect.add(new Option(commune.name, index));
+    });
+    updateMapLocation(region);
+  });
+
+  communeSelect.addEventListener('change', () => {
+    const region = regionSelect.value;
+    const communeIdx = communeSelect.value;
+    schoolSelect.innerHTML = '';
+    
+    if (!region || communeIdx === '' || !locationTreeData[region].communes[communeIdx]) {
+      schoolSelect.add(new Option('-- Vui lòng chọn Xã / Phường trước --', 'Ninh Binh, Vietnam'));
+      return;
+    }
+    
+    const schools = locationTreeData[region].communes[communeIdx].schools;
+    schools.forEach(school => {
+      schoolSelect.add(new Option(school.name, school.query));
+    });
+    if (schools.length > 0) updateMapLocation(schools[0].query);
+  });
+
+  schoolSelect.addEventListener('change', () => {
+    updateMapLocation(schoolSelect.value);
+  });
+}
+
+const mapSearchBtn = document.getElementById('mapSearchBtn');
+if (mapSearchBtn) mapSearchBtn.addEventListener('click', () => {
+  updateMapLocation(schoolSelect ? schoolSelect.value : 'Ninh Binh, Vietnam');
+});
+
+const proofFile = document.getElementById('proofFile');
+if (proofFile) proofFile.addEventListener('change', () => {
+  const hint = document.getElementById('fileHint');
+  if (hint) hint.textContent = proofFile.files.length ? 'Đã chọn tệp: ' + proofFile.files[0].name + '. Tệp đã được bảo mật an toàn.' : 'Chưa chọn tệp.';
+});
+
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+menuToggle.addEventListener('click', () => {
+  const opened = mainNav.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', String(opened));
+  menuToggle.setAttribute('aria-label', opened ? 'Đóng menu' : 'Mở menu');
+});
+
+mainNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+  mainNav.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.setAttribute('aria-label', 'Mở menu');
+}));
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    modal.classList.remove('open');
+    mainNav.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// Xử lý gửi phần Vòng Tay Xanh kết nối điểm hỗ trợ
+document.getElementById('locationSubmit').addEventListener('click', () => {
+  const region = document.getElementById('supportRegion').value;
+  const school = document.getElementById('supportSchoolName').value.trim();
+  const area = document.getElementById('supportSpecificArea').value;
+  const need = document.getElementById('supportNeed').value;
+  const result = document.getElementById('locationResult');
+  
+  result.style.display = 'block';
+  if (!region || !school) {
+    result.style.background = '#fde8e8';
+    result.style.color = '#9b1c1c';
+    result.textContent = 'Em vui lòng chọn đầy đủ Khu vực và nhập Tên trường học cụ thể ở phía trên nhé!';
+    return;
+  }
+  
+  result.style.background = '#edf6f0';
+  result.style.color = '#123b32';
+  result.textContent = 'Đã ghi nhận yêu cầu hỗ trợ tại: ' + school + ' (' + region + ') - Khu vực: ' + (area || 'Chưa rõ') + '. Nhu cầu: ' + need + '. Hệ thống đã chuyển thông tin an toàn đến người phụ trách tại cơ sở!';
+});
+</script>
+</body>
+</html>
